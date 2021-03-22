@@ -6,6 +6,7 @@ var rand1;
 var rand2;  
 var playerInput; 
 var timer; 
+var sessionTimer; 
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
@@ -23,6 +24,7 @@ function setup() {
   }
 
   timer = 0; 
+  sessionTimer = 0; 
 }
 
 function draw() {
@@ -45,8 +47,13 @@ function draw() {
       timer++; 
     }
 
+    if(frameCount % 60 === 0){
+      sessionTimer++; 
+    }
+
     textSize(15);
-    text("Time: " + timer, displayWidth/2 + 150,150); 
+    text("Time: " + timer, displayWidth/2 + 150,170); 
+    text("Session Time: " + sessionTimer, displayWidth/2 + 150,150); 
 
     this.button.mousePressed(()=>{
       playerInput = this.input.value(); 
