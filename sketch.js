@@ -5,17 +5,24 @@ var gameState = PROBLEM;
 var rand1; 
 var rand2;  
 var playerInput; 
+var timer; 
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
 
   this.input = createInput("Answer");
-  this.button = createButton('Check Answer!');  
+  this.button = createButton("Check Answer!"); 
+  this.next = createButton("Next Question"); 
+  this.next.position(displayWidth/2 + 150, 100);
 
+  if(gameState === PROBLEM){
+
+    rand1 = Math.round(random(100,450)); 
+    rand2 = Math.round(random(1,50)); 
   
-  rand1 = Math.round(random(100,450)); 
-  rand2 = Math.round(random(1,50)); 
+  }
 
+  timer = 0; 
 }
 
 function draw() {
@@ -29,9 +36,17 @@ function draw() {
     text("x " + rand2, displayWidth/2 - 35, displayHeight/2 -60);
   
     this.input.position(displayWidth/2 - 40 , displayHeight/2 - 30);
-    this.button.position(displayWidth/2 + 30, displayHeight/2); 
+    this.button.position(displayWidth/2 + 30, displayHeight/2);
+    this.next.position(displayWidth/2 + 150, 100); 
 
     var correctAnswer = rand1 * rand2; 
+
+    if(frameCount % 60 === 0){
+      timer++; 
+    }
+
+    textSize(15);
+    text("Time: " + timer, displayWidth/2 + 150,150); 
 
     this.button.mousePressed(()=>{
       playerInput = this.input.value(); 
@@ -47,6 +62,14 @@ function draw() {
         gameState = WRONG; 
       }
     });
+
+    this.next.mousePressed(()=>{
+
+    rand1 = Math.round(random(100,450)); 
+    rand2 = Math.round(random(1,50)); 
+    timer = 0; 
+
+    }); 
   }
 
   if(gameState === CORRECT){
@@ -57,7 +80,16 @@ function draw() {
 
     textSize(15);
     textFont("Calibri"); 
-    text("Good Job! You got the answer correct!", displayWidth/2 - 70, displayHeight/2 + 50); 
+    text("Good Job! You got the answer correct! It took you " + timer + " second/s.", displayWidth/2 - 70, displayHeight/2 + 50); 
+
+    this.next.mousePressed(()=>{
+
+      gameState = PROBLEM; 
+      rand1 = Math.round(random(100,450)); 
+      rand2 = Math.round(random(1,50)); 
+      timer = 0; 
+  
+      }); 
   }
 
   if(gameState === WRONG){
@@ -69,5 +101,15 @@ function draw() {
     textSize(15);
     textFont("Calibri"); 
     text("Wrong Answer, the correct answer was " + rand1 * rand2, displayWidth/2 - 70, displayHeight/2 + 50); 
+
+    this.next.mousePressed(()=>{
+
+      gameState = PROBLEM; 
+      rand1 = Math.round(random(100,450)); 
+      rand2 = Math.round(random(1,50)); 
+      timer = 0; 
+  
+      }); 
+
   }
 }
