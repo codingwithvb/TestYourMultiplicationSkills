@@ -57,11 +57,11 @@ function draw() {
 
     var correctAnswer = rand1 * rand2; 
 
-    if(frameCount % 60 === 0){
+    if(frameCount % 45 === 0){
       timer++; 
     }
 
-    if(frameCount % 60 === 0){
+    if(frameCount % 45 === 0){
       sessionTimer++; 
     }
 
