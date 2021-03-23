@@ -10,6 +10,7 @@ var incorrectAnswer;
 var playerInput; 
 var timer; 
 var totalQuestion; 
+var skippedQuestions; 
 var sessionTimer; 
 
 function setup() {
@@ -34,6 +35,7 @@ function setup() {
   incorrectAnswer = 0;
   correctAnswer = 0;  
   totalQuestion = 0; 
+  skippedQuestions = 0; 
 }
 
 function draw() {
@@ -57,11 +59,11 @@ function draw() {
 
     var correctAnswer = rand1 * rand2; 
 
-    if(frameCount % 60 === 0){
+    if(frameCount % 50 === 0){
       timer++; 
     }
 
-    if(frameCount % 60 === 0){
+    if(frameCount % 50 === 0){
       sessionTimer++; 
     }
 
@@ -93,6 +95,7 @@ function draw() {
     rand1 = Math.round(random(100,450)); 
     rand2 = Math.round(random(1,50)); 
     timer = 0; 
+    skippedQuestions++; 
 
     }); 
 
@@ -153,12 +156,12 @@ function draw() {
 
     textSize(50); 
     text("Session Report", displayWidth/2 - 100, 100);
+
     textSize(25); 
     text("Time Studied: " + sessionTimer + " second/s", displayWidth/2 - 100, 200);
-
-    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 300); 
-
-   text("Correct: " + correctAnswer, displayWidth/2 - 100, 400); 
-   text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 500); 
+    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 300);
+    text("Correct: " + correctAnswer, displayWidth/2 - 100, 400); 
+    text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 500); 
+    text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 600); 
   }
 }
