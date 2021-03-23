@@ -1,7 +1,7 @@
 var PROBLEM = 1; 
 var CORRECT = 2; 
 var WRONG = 3; 
-var SESSION_REPORT = 4; 
+var SESSION_REPORT = 4;  
 var gameState = PROBLEM; 
 var rand1; 
 var rand2;  
@@ -158,10 +158,10 @@ function draw() {
     text("Session Report", displayWidth/2 - 100, 100);
 
     textSize(25); 
-    text("Time Studied: " + sessionTimer + " second/s", displayWidth/2 - 100, 200);
-    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 300);
-    text("Correct: " + correctAnswer, displayWidth/2 - 100, 400); 
-    text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 500); 
-    text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 600); 
+    text("Time Studied: " + sessionTimer + " second/s", displayWidth/2 - 100, 150);
+    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 200);
+    text("Correct: " + correctAnswer, displayWidth/2 - 100, 250); 
+    text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 300); 
+    text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 350); 
   }
 }
