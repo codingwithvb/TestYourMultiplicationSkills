@@ -25,9 +25,13 @@ function setup() {
   this.button = createButton("Check Answer!"); 
   this.next = createButton("Next Question"); 
   this.session = createButton("End Session"); 
+
   this.selectRange = createButton("Select Final Range");
+  this.selectRange.style('background-color', 'lightcyan');
 
   this.startTest = createButton("Start Test");
+  this.startTest.style('background-color', 'lightcyan');
+
   this.randomSelector1 = createInput("Ex. 1");
   this.randomSelector2 = createInput("Ex. 100");
   this.randomSelector3 = createInput("Ex. 1");
