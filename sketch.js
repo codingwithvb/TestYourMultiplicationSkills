@@ -194,8 +194,15 @@ function draw() {
     this.next.mousePressed(()=>{
 
       gameState = PROBLEM; 
-      rand1 = Math.round(random(100,450)); 
-      rand2 = Math.round(random(1,50)); 
+      
+      nextPlayerTestProblem1 = parseInt(randomSelector1Input);
+      nextPlayerTestProblem2 = parseInt(randomSelector2Input);
+      nextPlayerTestProblem3 = parseInt(randomSelector3Input);
+      nextPlayerTestProblem4 = parseInt(randomSelector4Input);
+  
+      rand1 = Math.round(random(nextPlayerTestProblem1,nextPlayerTestProblem2)); 
+      rand2 = Math.round(random(nextPlayerTestProblem3,nextPlayerTestProblem4)); 
+  
       timer = 0; 
   
       }); 
@@ -214,8 +221,15 @@ function draw() {
     this.next.mousePressed(()=>{
 
       gameState = PROBLEM; 
-      rand1 = Math.round(random(100,450)); 
-      rand2 = Math.round(random(1,50)); 
+
+      nextPlayerTestProblem1 = parseInt(randomSelector1Input);
+      nextPlayerTestProblem2 = parseInt(randomSelector2Input);
+      nextPlayerTestProblem3 = parseInt(randomSelector3Input);
+      nextPlayerTestProblem4 = parseInt(randomSelector4Input);
+  
+      rand1 = Math.round(random(nextPlayerTestProblem1,nextPlayerTestProblem2)); 
+      rand2 = Math.round(random(nextPlayerTestProblem3,nextPlayerTestProblem4)); 
+  
       timer = 0; 
   
       }); 
