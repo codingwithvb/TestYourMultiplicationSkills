@@ -1,8 +1,9 @@
-var PROBLEM = 1; 
-var CORRECT = 2; 
-var WRONG = 3; 
-var SESSION_REPORT = 4;  
-var gameState = PROBLEM; 
+var NUMBERSELECTOR = 1; 
+var PROBLEM = 2; 
+var CORRECT = 3; 
+var WRONG = 4; 
+var SESSION_REPORT = 5;  
+var gameState = NUMBERSELECTOR; 
 var rand1; 
 var rand2;  
 var correctAnswer; 
@@ -12,6 +13,10 @@ var timer;
 var totalQuestion; 
 var skippedQuestions; 
 var sessionTimer; 
+var randomSelector1Input;
+var randomSelector2Input;
+var randomSelector3Input;
+var randomSelector4Input;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
@@ -20,15 +25,15 @@ function setup() {
   this.button = createButton("Check Answer!"); 
   this.next = createButton("Next Question"); 
   this.session = createButton("End Session"); 
+  this.selectRange = createButton("Select Final Range");
+
+  this.startTest = createButton("Start Test");
+  this.randomSelector1 = createInput("Ex. 1");
+  this.randomSelector2 = createInput("Ex. 100");
+  this.randomSelector3 = createInput("Ex. 1");
+  this.randomSelector4 = createInput("Ex. 100"); 
 
   this.next.position(displayWidth/2 + 150, 100);
-
-  if(gameState === PROBLEM){
-
-    rand1 = Math.round(random(100,450)); 
-    rand2 = Math.round(random(1,50)); 
-  
-  }
 
   timer = 0; 
   sessionTimer = 0; 
@@ -45,7 +50,64 @@ function draw() {
     correctAnswer = 0; 
   }
 
+  if(gameState === NUMBERSELECTOR){
+    this.input.hide();
+    this.button.hide();
+    this.next.hide();
+    this.session.hide(); 
+
+    this.startTest.position(displayWidth/2 + 250, 100);
+
+    this.randomSelector1.position(displayWidth/2 - 100, displayHeight/2 - 165); 
+    this.randomSelector2.position(displayWidth/2 + 100, displayHeight/2 - 165); 
+    this.randomSelector3.position(displayWidth/2 - 100, displayHeight/2 - 115); 
+    this.randomSelector4.position(displayWidth/2 + 100, displayHeight/2 - 115); 
+    this.selectRange.position(displayWidth/2 + 100, displayHeight/2 - 75); 
+
+    textSize(30);
+    textFont("Calibri");
+    text("Choose the Range for Your Test!", displayWidth/2 - 200, displayHeight/2 - 350);
+
+    textSize(15);
+    text("Choose the Range for the Multiplicand:", displayWidth/2-350, displayHeight/2 - 150); 
+    text("Choose the Range for the Multiplier:", displayWidth/2 - 350, displayHeight/2 - 100); 
+
+    this.selectRange.mousePressed(()=>{
+
+      randomSelector1Input = this.randomSelector1.value(); 
+      randomSelector2Input = this.randomSelector2.value(); 
+      randomSelector3Input = this.randomSelector3.value(); 
+      randomSelector4Input = this.randomSelector4.value();
+
+    });
+
+    var playersTestProblem1 = parseInt(randomSelector1Input);
+    var playersTestProblem2 = parseInt(randomSelector2Input);
+    var playersTestProblem3 = parseInt(randomSelector3Input);
+    var playersTestProblem4 = parseInt(randomSelector4Input);
+
+    this.startTest.mousePressed(()=>{
+
+     rand1 = Math.round(random(playersTestProblem1, playersTestProblem2)); 
+     rand2 = Math.round(random(playersTestProblem3,playersTestProblem4)); 
+
+     gameState = PROBLEM; 
+    });
+  }
+
   if(gameState === PROBLEM){
+
+    this.input.show();
+    this.button.show();
+    this.next.show();
+    this.session.show();
+    
+    this.startTest.hide(); 
+    this.randomSelector1.hide();
+    this.randomSelector2.hide();
+    this.randomSelector3.hide();
+    this.randomSelector4.hide();
+    this.selectRange.hide();
 
     textSize(50);
     textFont("Calibri"); 
@@ -94,6 +156,7 @@ function draw() {
 
     rand1 = Math.round(random(100,450)); 
     rand2 = Math.round(random(1,50)); 
+
     timer = 0; 
     skippedQuestions++; 
 
