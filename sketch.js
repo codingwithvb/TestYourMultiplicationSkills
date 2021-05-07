@@ -27,7 +27,7 @@ function setup() {
   this.session = createButton("End Session"); 
 
   this.selectRange = createButton("Select Final Range");
-  this.selectRange.style('background-color', 'lightcyan');
+  this.selectRange.style('background-color', 'red');
 
   this.startTest = createButton("Start Test");
   this.startTest.style('background-color', 'lightcyan');
@@ -82,6 +82,8 @@ function draw() {
       randomSelector2Input = this.randomSelector2.value(); 
       randomSelector3Input = this.randomSelector3.value(); 
       randomSelector4Input = this.randomSelector4.value();
+
+      this.selectRange.style('background-color', 'lime');
 
     });
 
