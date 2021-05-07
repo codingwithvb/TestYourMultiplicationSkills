@@ -8,6 +8,7 @@ var rand1;
 var rand2;  
 var correctAnswer; 
 var incorrectAnswer; 
+var percentageScore; 
 var playerInput; 
 var timer; 
 var totalQuestion; 
@@ -223,6 +224,9 @@ function draw() {
 
     correctAnswer = totalQuestion - incorrectAnswer; 
 
+    percentageScore = correctAnswer/totalQuestion;
+    percentageScore = Math.round(percentageScore  * 100);  
+
     textSize(50); 
     text("Session Report", displayWidth/2 - 100, 100);
 
@@ -232,5 +236,6 @@ function draw() {
     text("Correct: " + correctAnswer, displayWidth/2 - 100, 250); 
     text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 300); 
     text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 350); 
+    text("Score: " + percentageScore + "%", displayWidth/2 - 100, 400); 
   }
 }
