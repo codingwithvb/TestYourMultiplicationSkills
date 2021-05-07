@@ -161,8 +161,14 @@ function draw() {
 
     this.next.mousePressed(()=>{
 
-    rand1 = Math.round(random(100,450)); 
-    rand2 = Math.round(random(1,50)); 
+      
+    var nextPlayerTestProblem1 = parseInt(randomSelector1Input);
+    var nextPlayerTestProblem2 = parseInt(randomSelector2Input);
+    var nextPlayerTestProblem3 = parseInt(randomSelector3Input);
+    var nextPlayerTestProblem4 = parseInt(randomSelector4Input);
+
+    rand1 = Math.round(random(nextPlayerTestProblem1,nextPlayerTestProblem2)); 
+    rand2 = Math.round(random(nextPlayerTestProblem3,nextPlayerTestProblem4)); 
 
     timer = 0; 
     skippedQuestions++; 
@@ -225,7 +231,7 @@ function draw() {
     correctAnswer = totalQuestion - incorrectAnswer; 
 
     percentageScore = correctAnswer/totalQuestion;
-    percentageScore = Math.round(percentageScore  * 100);  
+    percentageScore = Math.round(percentageScore  * 100); 
 
     textSize(50); 
     text("Session Report", displayWidth/2 - 100, 100);
