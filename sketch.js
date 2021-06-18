@@ -20,12 +20,12 @@ var randomSelector3Input;
 var randomSelector4Input;
 
 function setup() {
-  createCanvas(displayWidth, displayHeight);
+  createCanvas(windowWidth, windowHeight);
 
   this.input = createInput("Answer");
   this.button = createButton("Check Answer!"); 
   this.next = createButton("Next Question"); 
-  this.session = createButton("End Session"); 
+  this.session = createButton("End Session");
 
   this.selectRange = createButton("Select Final Range");
   this.selectRange.style('background-color', 'red');
