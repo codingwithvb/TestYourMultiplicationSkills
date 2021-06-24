@@ -43,9 +43,14 @@ function setup() {
   timerinSeconds = 0;
   timerinMinutes = 0;
   timerinHours = 0;  
-  sessionTimer = 0; 
+
+  sessionTimerinSeconds = 0;
+  sessionTimerinMinutes = 0; 
+  sessionTimerinHours = 0; 
+
   incorrectAnswer = 0;
-  correctAnswer = 0;  
+  correctAnswer = 0; 
+
   totalQuestion = 0; 
   skippedQuestions = 0; 
 }
@@ -145,12 +150,22 @@ function draw() {
     }
 
     if(frameCount % 50 === 0){
-      sessionTimer++; 
+      sessionTimerinSeconds++; 
+    }
+
+    if(sessionTimerinSeconds >= 60){
+      sessionTimerinSeconds = 0; 
+      sessionTimerinMinutes++; 
+    }
+
+    if(sessionTimerinMinutes >= 60){
+      sessionTimerinMinutes = 0; 
+      sessionTimerinHours++; 
     }
 
     textSize(15);
     text("Time: " + timerinHours + ":" + timerinMinutes + ":" + timerinSeconds, displayWidth/2 + 150,170); 
-    text("Session Time: " + sessionTimer, displayWidth/2 + 150,150); 
+    text("Session Time: " + sessionTimerinHours + ":" + sessionTimerinMinutes + ":" + sessionTimerinSeconds, displayWidth/2 + 150,150); 
 
     this.button.mousePressed(()=>{
       playerInput = this.input.value(); 
@@ -201,7 +216,7 @@ function draw() {
 
     textSize(15);
     textFont("Calibri"); 
-    text("Good Job! You got the answer correct! It took you " + timer + " second/s.", displayWidth/2 - 70, displayHeight/2 + 50); 
+    text("Good Job! You got the answer correct!", displayWidth/2 - 70, displayHeight/2 + 50); 
 
     this.next.mousePressed(()=>{
 
@@ -215,7 +230,9 @@ function draw() {
       rand1 = Math.round(random(nextPlayerTestProblem1,nextPlayerTestProblem2)); 
       rand2 = Math.round(random(nextPlayerTestProblem3,nextPlayerTestProblem4)); 
   
-      timer = 0; 
+      timerinHours = 0;
+      timerinMinutes = 0; 
+      timerinSeconds = 0;  
   
       }); 
   }
@@ -242,7 +259,9 @@ function draw() {
       rand1 = Math.round(random(nextPlayerTestProblem1,nextPlayerTestProblem2)); 
       rand2 = Math.round(random(nextPlayerTestProblem3,nextPlayerTestProblem4)); 
   
-      timer = 0; 
+      timerinHours = 0;
+      timerinMinutes = 0; 
+      timerinSeconds = 0;  
   
       }); 
 
@@ -263,7 +282,7 @@ function draw() {
     text("Session Report", displayWidth/2 - 100, 100);
 
     textSize(25); 
-    text("Time Studied: " + sessionTimer + " second/s", displayWidth/2 - 100, 150);
+    text("Time Studied: " + sessionTimerinHours + ":" + sessionTimerinMinutes + ":" + sessionTimerinSeconds, displayWidth/2 - 100, 150);
     text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 200);
     text("Correct: " + correctAnswer, displayWidth/2 - 100, 250); 
     text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 300); 
