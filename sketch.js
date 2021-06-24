@@ -40,7 +40,9 @@ function setup() {
 
   this.next.position(displayWidth/2 + 150, 100);
 
-  timer = 0; 
+  timerinSeconds = 0;
+  timerinMinutes = 0;
+  timerinHours = 0;  
   sessionTimer = 0; 
   incorrectAnswer = 0;
   correctAnswer = 0;  
@@ -129,7 +131,17 @@ function draw() {
     var correctAnswer = rand1 * rand2; 
 
     if(frameCount % 50 === 0){
-      timer++; 
+      timerinSeconds++; 
+    }
+
+    if(timerinSeconds >= 60){
+      timerinSeconds = 0; 
+      timerinMinutes++; 
+    }
+
+    if(timerinHours >= 60){
+      timerinMinutes = 0; 
+      timerinHours++; 
     }
 
     if(frameCount % 50 === 0){
@@ -137,7 +149,7 @@ function draw() {
     }
 
     textSize(15);
-    text("Time: " + timer, displayWidth/2 + 150,170); 
+    text("Time: " + timerinHours + ":" + timerinMinutes + ":" + timerinSeconds, displayWidth/2 + 150,170); 
     text("Session Time: " + sessionTimer, displayWidth/2 + 150,150); 
 
     this.button.mousePressed(()=>{
