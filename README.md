@@ -1,1 +1,1 @@
-A fun way to practice your multiplication skills! 
+Mobile Application for TestYourMultiplicationSkills is currently under work! Stay tuned for more updates!
