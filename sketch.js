@@ -282,11 +282,11 @@ function draw() {
     text("Session Report", displayWidth/2 - 100, 100);
 
     textSize(25); 
-    text("Score: " + percentageScore + "%", displayWidth/2 - 100, 400); 
-    text("Time Studied: " + sessionTimerinHours + ":" + sessionTimerinMinutes + ":" + sessionTimerinSeconds, displayWidth/2 - 100, 150);
-    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 200);
-    text("Correct: " + correctAnswer, displayWidth/2 - 100, 250); 
-    text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 300); 
-    text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 350); 
+    text("Score: " + percentageScore + "%", displayWidth/2 - 100, 150); 
+    text("Time Studied: " + sessionTimerinHours + ":" + sessionTimerinMinutes + ":" + sessionTimerinSeconds, displayWidth/2 - 100, 200);
+    text("Number of Questions: " + totalQuestion, displayWidth/2 - 100, 250);
+    text("Correct: " + correctAnswer, displayWidth/2 - 100, 300); 
+    text("Incorrect: " + incorrectAnswer, displayWidth/2 - 100, 350); 
+    text("Skipped: " + skippedQuestions, displayWidth/2 - 100, 400); 
   }
 }
